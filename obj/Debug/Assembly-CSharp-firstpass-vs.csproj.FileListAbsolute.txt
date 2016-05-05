@@ -1,0 +1,11 @@
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\UnityEditor.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\UnityEngine.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\Mono.Cecil.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\nunit.framework.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\Unity.DataContract.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\St.Xanxas\Documents\New Unity Project\obj\Debug\Assembly-CSharp-firstpass-vs.csprojResolveAssemblyReference.cache
+D:\St.Xanxas\Documents\New Unity Project\obj\Debug\Assembly-CSharp-firstpass.dll
+D:\St.Xanxas\Documents\New Unity Project\obj\Debug\Assembly-CSharp-firstpass.pdb

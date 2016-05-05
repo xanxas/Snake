@@ -1,0 +1,13 @@
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\Assembly-CSharp-firstpass.pdb
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEditor.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.xml
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_bin\Debug\UnityEditor.xml
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_obj\Debug\New Unity Project.CSharp.Plugins.csprojResolveAssemblyReference.cache
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_obj\Debug\Assembly-CSharp-firstpass.dll
+D:\St.Xanxas\Documents\New Unity Project\Temp\UnityVS_obj\Debug\Assembly-CSharp-firstpass.pdb
