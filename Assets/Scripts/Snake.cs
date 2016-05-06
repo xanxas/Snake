@@ -11,9 +11,7 @@ public class Snake : MonoBehaviour {
     //Голова
     public GameObject Head;
     //Сторона движения
-    public int Course,
-    //Длина змеи
-               Lenght;
+    public int Course;
     //настоящее время, после которого совершается ход
     public float Postime,
     //Интервал между шагами
@@ -47,8 +45,6 @@ public class Snake : MonoBehaviour {
         Postime = 0;
         //Сторона движения
         Course = 0;
-        //Длина змеи
-        Lenght = 1;
         //Интервал между шагами
         Inteval = 0.5F;
         //Пауза
@@ -69,10 +65,7 @@ public class Snake : MonoBehaviour {
         KeyLeft = (int)KeyCode.A;
         //Вправо
         KeyRight = (int)KeyCode.D;
-        //go = true;
-        //colli = new Vector3(100, 100, 100);
-        //colli2 = new Vector3(1, 1, 1);
-        //colliders = Physics.OverlapBox(colli2, colli);
+
 
     }
     //-----------------------------------------
@@ -80,8 +73,7 @@ public class Snake : MonoBehaviour {
     //Передвижение
     public void Move()
     {
-        //colliders[0].SendMessage("OVER LAP");
-        //print(colliders[0]);
+
         if (eating)
         {   //Создание объекта тела
              GameObject g = (GameObject)Instantiate(Body, empty, Quaternion.identity);
