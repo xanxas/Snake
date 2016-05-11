@@ -10,8 +10,12 @@ public class Snake : MonoBehaviour {
     public GameObject Body; 
     //Голова
     public GameObject Head;
+    //Поверхность событий
+    public GameObject Float;
     //Сторона движения
     public int Course;
+    //Горизонтальное или вертикальное движение
+    public bool vh;
     //настоящее время, после которого совершается ход
     public float Postime,
     //Интервал между шагами
@@ -32,15 +36,14 @@ public class Snake : MonoBehaviour {
     //Координаты
     Vector3 point,
             empty;
-            //colli,
-            //colli2;
+ 
     public Collider[] colliders;
     //Конструктор----------------------------
 
     Snake()
 
     {
-        //point = Head.transform.position;
+
         //настоящее время, после которого совершается ход
         Postime = 0;
         //Сторона движения
@@ -53,7 +56,8 @@ public class Snake : MonoBehaviour {
         eating = false;
         //Список с частями хвоста
         tail = new List<Transform>();
-        //Координаты перемещения головы----------------------
+        //Горизонтальное или вертикальное движение
+        vh = true;
 
         //Пауза
         KeyPause = (int)KeyCode.Space;
@@ -73,12 +77,13 @@ public class Snake : MonoBehaviour {
     //Передвижение
     public void Move()
     {
-
+        //активация поедания
         if (eating)
         {   //Создание объекта тела
              GameObject g = (GameObject)Instantiate(Body, empty, Quaternion.identity);
             //добавление в список
             tail.Insert(0, g.transform);
+            //деактивация поедания
             eating = false;
         }
         //Если была нажата клавиша, то пауза
@@ -93,13 +98,13 @@ public class Snake : MonoBehaviour {
         //направление
         switch (Course)
         {   //Движение вверх
-            case 0: point = new Vector3(0, 0, 36); break;
+            case 0: if (!Collide(0, -36, 36, Head, Float)) point = new Vector3(0, 0, 36); else Pause = false; break;
             //Вниз
-            case 1: point = new Vector3(0, 0, -36); ; break;
+            case 1: if (!Collide(0, -36, -36, Head, Float)) point = new Vector3(0, 0, -36); else Pause = false; break;
             //Влево
-            case 2: point = new Vector3(-36, 0, 0); ; break;
+            case 2: if (!Collide(-36, -36, 0, Head, Float)) point = new Vector3(-36, 0, 0); else Pause = false; break;
             //Вправо
-            case 3: point = new Vector3(36, 0, 0); ; break;
+            case 3: if (!Collide(36, -36, 0, Head, Float)) point = new Vector3(36, 0, 0); else Pause = false; break;
         }
         
         //прошёл ли интервал, не стоит ли пауза
@@ -110,6 +115,7 @@ public class Snake : MonoBehaviour {
             Postime = Time.time + Inteval;
             //перемещение
             Head.transform.Translate(point);
+            //Движение хвоста
             if (tail.Count > 0)
             {
                 // Move last Tail Element to where the Head was
@@ -125,6 +131,37 @@ public class Snake : MonoBehaviour {
         
     }
 
+   public bool Collide(int x, int y, int z, GameObject item_check, GameObject item_collide)
+    {
+        //Координаты поверхности столкновения
+        float planeup = item_collide.transform.position.y + ((item_collide.GetComponent<Renderer>().bounds.size.y) / 2);//Координаты перхней плоскости
+        float planedown = item_collide.transform.position.y - ((item_collide.GetComponent<Renderer>().bounds.size.y) / 2);//Координаты нижней плоскости
+        float planeright = item_collide.transform.position.x + ((item_collide.GetComponent<Renderer>().bounds.size.x) / 2);//Координаты правой плоскости
+        float planeleft = item_collide.transform.position.x - ((item_collide.GetComponent<Renderer>().bounds.size.x) / 2);//Координаты левой плоскости
+        float planefront = item_collide.transform.position.z - ((item_collide.GetComponent<Renderer>().bounds.size.z) / 2);//Координаты передней плоскости
+        float planebehinde = item_collide.transform.position.z + ((item_collide.GetComponent<Renderer>().bounds.size.z) / 2);//Координаты задней лоскости
+
+        //Координаты поверхности формального объекта
+        float objectup = item_check.transform.position.y + y + ((item_check.GetComponent<Renderer>().bounds.size.y) / 2);//Координаты перхней плоскости
+        float objectdown = item_check.transform.position.y + y - ((item_check.GetComponent<Renderer>().bounds.size.y) / 2);//Координаты нижней плоскости
+        float objectright = item_check.transform.position.x + x + ((item_check.GetComponent<Renderer>().bounds.size.x) / 2);//Координаты правой плоскости
+        float objectleft = item_check.transform.position.x + x - ((item_check.GetComponent<Renderer>().bounds.size.x) / 2);//Координаты левой плоскости
+        float objectfront = item_check.transform.position.z + z - ((item_check.GetComponent<Renderer>().bounds.size.z) / 2);//Координаты передней плоскости
+        float objectbehinde = item_check.transform.position.z + z + ((item_check.GetComponent<Renderer>().bounds.size.z) / 2);//Координаты задней лоскости
+
+        
+        if (planeup <= objectdown || objectup <= planedown)//Выше объект или ниже чем поверхность
+            return true;
+        else 
+        if (planeleft >= objectright || objectleft >= planeright)//Левее объект или правее чем поверхность
+            return true;
+        else 
+        if (planebehinde <= objectfront || objectbehinde <= planefront)//Дальше объект или ближе чем поверхность
+            return true;
+        else return false;
+
+
+    } 
  
     //Вызов при столкновении
 void OnTriggerEnter(Collider coll)
@@ -142,7 +179,6 @@ void OnTriggerEnter(Collider coll)
     }
     public bool spawn = false;
     void Update () {
-         
         Move();
         if (spawn)
         {                 
